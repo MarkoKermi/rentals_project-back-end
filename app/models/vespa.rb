@@ -1,0 +1,2 @@
+class Vespa < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class VespasController < ApplicationController
+end

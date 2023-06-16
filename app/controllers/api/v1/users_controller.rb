@@ -1,4 +1,6 @@
 # frozen_string_literal: true
 
-class UsersController < ApplicationController
+module API
+  class UsersController < ApplicationController
+  end
 end

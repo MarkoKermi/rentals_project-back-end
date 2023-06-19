@@ -35,7 +35,7 @@ module API
         end
       end
 
-      # DELETE /vapas/:id
+      # DELETE /vaspas/:id
       def destroy
         @vaspa.destroy
         head :no_content

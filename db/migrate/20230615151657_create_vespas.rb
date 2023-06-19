@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Creates the Vespas table
 class CreateVespas < ActiveRecord::Migration[7.0]
   def change

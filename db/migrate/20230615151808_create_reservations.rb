@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Creates the reservations table
 class CreateReservations < ActiveRecord::Migration[7.0]
   def change

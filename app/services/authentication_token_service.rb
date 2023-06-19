@@ -1,9 +1,7 @@
-# frozen_string_literal: true
-
 # Service class for generating and decoding authentication tokens.
 class AuthenticationTokenService
   HMAC_SECRET = Rails.application.credentials.secret_key_base
-  ALGORITHM_TYPE = 'HS256'
+  ALGORITHM_TYPE = 'HS256'.freeze
 
   def self.call(user_id)
     payload = { user_id: user_id }

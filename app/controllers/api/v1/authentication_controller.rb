@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Api
   module V1
     # Handles authentication for the API
@@ -8,6 +6,8 @@ module Api
 
       rescue_from ActionController::ParameterMissing, with: :parameter_missing
       rescue_from AuthenticateError, with: :handle_unauthenticated
+
+      before_action :validate_token, only: [:index]
 
       def create
         user = find_user_by_username

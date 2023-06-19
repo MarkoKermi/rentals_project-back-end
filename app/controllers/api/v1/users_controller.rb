@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 module Api
   module V1
+    # Creates the Users API
     class UsersController < ApplicationController
       def create
         user = User.new(user_params)

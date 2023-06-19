@@ -4,5 +4,5 @@ class User < ApplicationRecord
   has_many :reservations
 
   validates :username, presence: true, uniqueness: true
-  validates :password, presence: true, lenght: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }
 end

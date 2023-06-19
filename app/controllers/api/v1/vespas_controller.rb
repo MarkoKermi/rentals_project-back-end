@@ -5,51 +5,52 @@ class VespasController < ApplicationController
       class VespasController < ApplicationController
         before_action :authenticate_request!, only: %i[create update destroy]
         before_action :set_car, only: %i[update show destroy]
-        # GET /vespas
+
+        # GET /vaspas
         def index
-          @vespas = Vespa.all
-          render json: VespasRepresenter.new(@vespas).as_json
+          @vaspas = Vaspa.all
+          render json: VaspasRepresenter.new(@vaspas).as_json
         end
 
-        # POST /vespa
+        # POST /vaspa
         def create
-          @vespa = current_user!.vespas.create(vespa_params)
-          if @vespa.save
-            render json: VespaRepresenter.new(@vespa).as_json, status: :created
+          @vaspa = current_user!.vaspas.create(vaspa_params)
+          if @vaspa.save
+            render json: VaspaRepresenter.new(@vaspa).as_json, status: :created
           else
-            render json: @vespa.errors, status: :unprocessable_entity
+            render json: @vaspa.errors, status: :unprocessable_entity
           end
         end
 
-        # GET /vespas/:id
+        # GET /vaspas/:id
         def show
-          render json: VespaRepresenter.new(@vespa).as_json
+          render json: VaspaRepresenter.new(@vaspa).as_json
         end
 
-        # PUT /vespas/:id
+        # PUT /vaspas/:id
         def update
-          @vespa.update(vespa_params)
-          if @vespa.save
-            render json: VespaRepresenter.new(@vespa).as_json, status: :created
+          @vaspa.update(vaspa_params)
+          if @vaspa.save
+            render json: VaspaRepresenter.new(@vaspa).as_json, status: :created
           else
-            render json: @vespa.errors, status: :unprocessable_entity
+            render json: @vaspa.errors, status: :unprocessable_entity
           end
         end
 
-        # DELETE /vespas/:id
+        # DELETE /vaspas/:id
         def destroy
-          @vespa.destroy
+          @vaspa.destroy
           head :no_content
         end
 
         private
 
-        def vespa_params
+        def vaspa_params
           params.permit(:name, :description, :photo, :price, :model, :user_id)
         end
 
-        def set_vespa
-          @vespa = Vespa.find(params[:id])
+        def set_vaspa
+          @vaspa = Vaspa.find(params[:id])
         end
       end
     end

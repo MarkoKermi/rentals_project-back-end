@@ -4,51 +4,51 @@ module API
     class VespasController < ApplicationController
       before_action :authenticate_request!, only: %i[create update destroy]
       before_action :set_car, only: %i[update show destroy]
-      # GET /cars
+      # GET /vaspas
       def index
-        @cars = Car.all
-        render json: CarsRepresenter.new(@cars).as_json
+        @vaspas = Vaspa.all
+        render json: VaspasRepresenter.new(@vaspas).as_json
       end
 
-      # POST /car
+      # POST /vaspa
       def create
-        @car = current_user!.cars.create(car_params)
-        if @car.save
-          render json: CarRepresenter.new(@car).as_json, status: :created
+        @vaspa = current_user!.vaspas.create(vaspa_params)
+        if @vaspa.save
+          render json: VaspaRepresenter.new(@vaspa).as_json, status: :created
         else
-          render json: @car.errors, status: :unprocessable_entity
+          render json: @vaspa.errors, status: :unprocessable_entity
         end
       end
 
-      # GET /cars/:id
+      # GET /vaspas/:id
       def show
-        render json: CarRepresenter.new(@car).as_json
+        render json: VaspaRepresenter.new(@vaspa).as_json
       end
 
-      # PUT /cars/:id
+      # PUT /vaspas/:id
       def update
-        @car.update(car_params)
-        if @car.save
-          render json: CarRepresenter.new(@car).as_json, status: :created
+        @vaspa.update(vaspa_params)
+        if @vaspa.save
+          render json: VaspaRepresenter.new(@vaspa).as_json, status: :created
         else
-          render json: @car.errors, status: :unprocessable_entity
+          render json: @vaspa.errors, status: :unprocessable_entity
         end
       end
 
-      # DELETE /cars/:id
+      # DELETE /vapas/:id
       def destroy
-        @car.destroy
+        @vaspa.destroy
         head :no_content
       end
 
       private
 
-      def car_params
+      def vaspa_params
         params.permit(:name, :description, :photo, :price, :model, :user_id)
       end
 
-      def set_car
-        @car = Car.find(params[:id])
+      def set_vaspa
+        @vaspa = Vaspa.find(params[:id])
       end
     end
   end

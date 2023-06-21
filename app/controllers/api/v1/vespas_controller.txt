@@ -1,0 +1,55 @@
+module Api
+  module V1
+          # This controller handles Vespas in the API version 1.
+    class VespasController <  ApplicationController
+        before_action :authenticate_request!, only: %i[create update destroy]
+        before_action :set_vespa, only: %i[update show destroy]
+
+        # GET /vespas
+        def index
+          @vespas = Vespa.all
+          render json: @vespas, status: :ok
+        end
+
+        # POST /vespas
+        def create
+          @vespa = current_user!.vespas.create(vespa_params)
+          if @vespa.save
+            render json: @vespa, status: :created
+          else
+            render json: { errors: @vespa.errors }, status: :unprocessable_entity
+          end
+        end
+
+        # GET /vespas/:id
+        def show
+          render json: @vespa, status: :ok
+        end
+
+        # PUT /vespas/:id
+        def update
+          if @vespa.update(vespa_params)
+            render json: @vespa, status: :ok
+          else
+            render json: { errors: @vespa.errors }, status: :unprocessable_entity
+          end
+        end
+
+        # DELETE /vespas/:id
+        def destroy
+          @vespa.destroy
+          head :no_content
+        end
+
+        private
+
+        def vespa_params
+          params.permit(:name, :description, :photo, :price, :model, :user_id)
+        end
+
+        def set_vespa
+          @vespa = Vespa.find(params[:id])
+        end
+    end
+  end
+end

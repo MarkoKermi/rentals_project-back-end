@@ -1,54 +1,53 @@
 module Api
   module V1
-    # Reservation controller
     class ReservationsController < ApplicationController
       before_action :authenticate_request!, only: %i[create update destroy]
       before_action :set_reservation, only: %i[update show destroy]
+
+      # GET /reservations
       def index
         @reservations = Reservation.all
+        render json: @reservations
       end
 
-      def show; end
-
-      def new
-        @reservation = Reservation.new
-      end
-
+      # POST /reservations
       def create
-        @reservation = Reservation.new(reservation_params)
-        # @reservation = @current_user.reservations.new(reservation_params)
-
+        @reservation = @current_user.reservations.new(reservation_params)
         if @reservation.save
-          redirect_to @reservation, notice: 'Reservation created successfully.'
+          render json: @reservation, status: :created
         else
-          render :new
+          render json: @reservation.errors, status: :unprocessable_entity
         end
       end
 
-      def edit; end
+      # GET /reservations/:id
+      def show
+        render json: @reservation
+      end
 
+      # PUT /reservations/:id
       def update
         if @reservation.update(reservation_params)
-          redirect_to @reservation, notice: 'Reservation updated successfully.'
+          render json: @reservation, status: :ok
         else
-          render :edit
+          render json: @reservation.errors, status: :unprocessable_entity
         end
       end
 
+      # DELETE /reservations/:id
       def destroy
         @reservation.destroy
-
-        redirect_to reservations_path, notice: 'Reservation deleted successfully.'
+        head :no_content
       end
 
       private
 
-      def set_reservation
-        @reservation = Reservation.find(params[:id])
+      def reservation_params
+        params.require(:reservation).permit(:city, :pick_up, :return_date, :car_id)
       end
 
-      def reservation_params
-        params.require(:reservation).permit(:city, :pick_up_date, :return_date, :user_id, :vespa_id)
+      def set_reservation
+        @reservation = Reservation.find(params[:id])
       end
     end
   end

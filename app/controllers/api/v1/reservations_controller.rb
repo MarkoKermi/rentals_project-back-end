@@ -1,8 +1,8 @@
 module Api
   module V1
     class ReservationsController < ApplicationController
-      before_action :authenticate_request!, only: [:create, :update, :destroy]
-      before_action :set_reservation, only: [:update, :show, :destroy]
+      before_action :authenticate_request!, only: %i[create update destroy]
+      before_action :set_reservation, only: %i[update show destroy]
 
       # GET /reservations
       def index
@@ -52,4 +52,3 @@ module Api
     end
   end
 end
-

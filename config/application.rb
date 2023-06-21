@@ -13,7 +13,7 @@ module RentalsProjectBackEnd
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.autoloader = :classic
-    config.autoload_paths << "#{Rails.root}/app/controllers/api/v1"
+    # config.autoload_paths << "#{Rails.root}/app/controllers/api/v1"
     config.api_only = true
     config.load_defaults 7.0
 

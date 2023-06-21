@@ -1,7 +1,7 @@
 module Api
   module V1
           # This controller handles Vespas in the API version 1.
-    class VespasController <  Api::V1::BaseController
+    class VespasController <  ApplicationController
         before_action :authenticate_request!, only: %i[create update destroy]
         before_action :set_vespa, only: %i[update show destroy]
 

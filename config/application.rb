@@ -12,6 +12,9 @@ module RentalsProjectBackEnd
   # Creates the aplication class
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.autoloader = :classic
+    config.autoload_paths << "#{Rails.root}/app/controllers/api/v1"
+    config.api_only = true
     config.load_defaults 7.0
 
     # Configuration for the application, engines, and railties goes here.
@@ -25,6 +28,7 @@ module RentalsProjectBackEnd
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
+    
     config.api_only = true
   end
 end

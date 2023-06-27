@@ -7,6 +7,7 @@ module Api
       def authenticate_request!
         return invalid_authentication unless valid_payload?
 
+        
         find_current_user
         invalid_authentication unless @current_user 
       end

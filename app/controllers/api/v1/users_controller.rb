@@ -6,7 +6,8 @@ module Api
         user = User.new(user_params)
 
         if user.save
-          render_created_response(user)
+          authenticate_user(user)
+          render_authenticated_user(user)
         else
           render_error_response(user.errors)
         end
@@ -18,13 +19,15 @@ module Api
         params.require(:user).permit(:username, :password)
       end
 
-      def render_created_response(user)
+      def authenticate_user(user)
+        token = AuthenticationTokenService.call(user.id) # Generate token
+        response.headers['Authorization'] = "Bearer #{token}" # Set token in response header
+      end
+
+      def render_authenticated_user(user)
         render json: {
-          user: {
-            id: user.id,
-            username: user.username
-          },
-          message: 'User created successfully.'
+          user: { id: user.id, username: user.username, token: response.headers['Authorization'] },
+          message: 'Authentication successful.'
         }, status: :created
       end
 

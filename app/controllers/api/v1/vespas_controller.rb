@@ -2,12 +2,12 @@ module Api
   module V1
     class VespasController < ApplicationController
       # This controller handles Vespas in the API version 1.
-      before_action :authenticate_request!, only: %i[create update destroy]
+      before_action :authenticate_request!, only: %i[index create update destroy]
       before_action :set_vespa, only: %i[update show destroy]
 
       # GET /vespas
       def index
-        @vespas = Vespa.all
+        @vespas = @current_user.vespas
         render json: VespasRepresenter.new(@vespas).as_json
       end
 

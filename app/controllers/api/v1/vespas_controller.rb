@@ -13,7 +13,8 @@ module Api
 
       # POST /vespa
       def create
-        @vespa = current_user!.vespas.create(vespa_params)
+        @vespa = Vespa.new(vespa_params)
+        @vespa.user = @current_user
         if @vespa.save
           render json: VespaRepresenter.new(@vespa).as_json, status: :created
         else

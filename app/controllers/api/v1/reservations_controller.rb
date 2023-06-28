@@ -6,6 +6,7 @@ module Api
 
       # GET /reservations
       def index
+        debugger
         @reservations = Reservation.all
         render json: @reservations
       end
@@ -43,7 +44,7 @@ module Api
       private
 
       def reservation_params
-        params.require(:reservation).permit(:city, :pick_up, :return_date, :car_id)
+        params.require(:reservation).permit(:city, :pick_up_date, :return_date, :user_id, :vespa_id)
       end
 
       def set_reservation

@@ -6,7 +6,6 @@ module Api
 
       # GET /reservations
       def index
-        debugger
         @reservations = Reservation.all
         render json: @reservations
       end

@@ -6,9 +6,9 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       let(:valid_params) { { user: { username: 'john_doe', password: 'password' } } }
 
       it 'creates a new user' do
-        expect {
+        expect do
           post :create, params: valid_params
-        }.to change(User, :count).by(1)
+        end.to change(User, :count).by(1)
       end
 
       it 'returns a successful response with user details' do
@@ -23,9 +23,9 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       let(:invalid_params) { { user: { username: '', password: 'password' } } }
 
       it 'does not create a new user' do
-        expect {
+        expect do
           post :create, params: invalid_params
-        }.not_to change(User, :count)
+        end.not_to change(User, :count)
       end
 
       it 'returns an error response with error details' do

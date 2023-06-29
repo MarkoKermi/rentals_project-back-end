@@ -2,14 +2,11 @@ module Api
   module V1
     # Namespace for version 1 of the API
     class ApplicationController < ActionController::API
-
-      
       def authenticate_request!
         return invalid_authentication unless valid_payload?
 
-        
         find_current_user
-        invalid_authentication unless @current_user 
+        invalid_authentication unless @current_user
       end
 
       private
@@ -21,7 +18,6 @@ module Api
       end
 
       def find_current_user
-        
         payload = extract_payload
         @current_user = User.find_by(id: payload[0]['user_id']) if payload
       end

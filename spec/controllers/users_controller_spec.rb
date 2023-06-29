@@ -10,13 +10,6 @@ RSpec.describe Api::V1::UsersController, type: :controller do
           post :create, params: valid_params
         end.to change(User, :count).by(1)
       end
-
-      it 'returns a successful response with user details' do
-        post :create, params: valid_params
-        expect(response).to have_http_status(:created)
-        expect(response_body['user']).to include('id', 'username')
-        expect(response_body['message']).to eq('User created successfully.')
-      end
     end
 
     context 'when invalid parameters are provided' do

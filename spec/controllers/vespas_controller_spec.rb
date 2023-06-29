@@ -1,7 +1,6 @@
 require 'rails_helper'
 require 'factory_bot_rails'
 
-
 RSpec.describe Api::V1::VespasController, type: :controller do
   describe 'GET #index' do
     it 'returns a successful response with all vespas' do
@@ -16,7 +15,10 @@ RSpec.describe Api::V1::VespasController, type: :controller do
   describe 'POST #create' do
     context 'when authenticated' do
       let(:user) { create(:user) }
-      let(:valid_params) { { name: 'Vespa 1', description: 'Description 1', photo: 'photo.jpg', price: 1000, model: 'Model 1', user_id: user.id } }
+      let(:valid_params) do
+        { name: 'Vespa 1', description: 'Description 1', photo: 'photo.jpg', price: 1000, model: 'Model 1',
+          user_id: user.id }
+      end
 
       before do
         allow(controller).to receive(:authenticate_request!).and_return(true)
@@ -24,9 +26,9 @@ RSpec.describe Api::V1::VespasController, type: :controller do
       end
 
       it 'creates a new vespa' do
-        expect {
+        expect do
           post :create, params: valid_params
-        }.to change(Vespa, :count).by(1)
+        end.to change(Vespa, :count).by(1)
       end
 
       it 'returns a successful response with vespa details' do
@@ -86,9 +88,9 @@ RSpec.describe Api::V1::VespasController, type: :controller do
     end
 
     it 'destroys the vespa' do
-      expect {
+      expect do
         delete :destroy, params: { id: vespa.id }
-      }.to change(Vespa, :count).by(-1)
+      end.to change(Vespa, :count).by(-1)
     end
 
     it 'returns a no content response' do

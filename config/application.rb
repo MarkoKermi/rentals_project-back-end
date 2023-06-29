@@ -1,14 +1,20 @@
-require_relative "boot"
+# frozen_string_literal: true
 
-require "rails/all"
+require_relative 'boot'
+
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
 module RentalsProjectBackEnd
+  # Creates the aplication class
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.autoloader = :classic
+    # config.autoload_paths << "#{Rails.root}/app/controllers/api/v1"
+    config.api_only = true
     config.load_defaults 7.0
 
     # Configuration for the application, engines, and railties goes here.
@@ -22,6 +28,7 @@ module RentalsProjectBackEnd
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
+    
     config.api_only = true
   end
 end

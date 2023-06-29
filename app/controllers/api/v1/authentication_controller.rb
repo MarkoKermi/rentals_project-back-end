@@ -30,7 +30,7 @@ module Api
 
       def render_authenticated_user(user)
         render json: {
-          user: { id: user.id, username: user.username },
+          user: { id: user.id, username: user.username, token: response.headers['Authorization'] },
           message: 'Authentication successful.'
         }, status: :created
       end

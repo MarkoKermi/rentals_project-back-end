@@ -2,85 +2,152 @@
 
 # 📗 Table of Contents
 
-- [📖 About the Project](#about-project)
-  - [🛠 Built With](#built-with)
-    - [Tech Stack](#tech-stack)
-    - [Key Features](#key-features)
-- [💻 Getting Started](#getting-started)
-  - [Setup](#setup)
-  - [Prerequisites](#prerequisites)
-  - [Usage](#usage)
-- [👥 Author](#author)
-- [🔭 Future Features](#future-features)
-- [🤝 Contributing](#contributing)
-- [⭐️ Show your support](#support)
-- [🙏 Acknowledgements](#acknowledgements)
+- [📗 Table of Contents](#-table-of-contents)
+- [🛵\[Booking Vespa API\] ](#about-project)
+  - [Database Structure](#erd)
+  - [📄\[Project Documentation\] ](#project-documentation)
+  - [Kanban Board](#kanban-board)
+  - [🛠 Built With ](#built-with)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Setup](#setup)
+    - [Install](#install)
+    - [Usage](#usage)
+    - [Run tests](#run-tests)
+  - [👥 Authors ](#authors)
+  - [🔭 Future Features ](#future-features)
+  - [🤝 Contributing ](#contributing)
+  - [⭐️ Show your support ](#️support)
+  - [🙏 Acknowledgments ](#acknowledgements)
+  - [📝 License ](#license)
 
-- [📝 License](#license)
+<!-- PROJECT DESCRIPTION -->
 
-# 📖 Rentals Vespa [BACKEND] <a name="about-project"></a>
+# Booking Vespa 🛵 <a name="about-project"></a>
 
-Rentals Vespa project. It's app that can be used for creating and booking vespas. [BACKEND] (two applications)
+This project is designed for the reservation of fancy vespas. If you are preparing for a special day or event and you want a cool Vespa for it, this website is the best place for you. If you have a luxurious Vespa and want to make some extra money from it, you can add it to our website and others will be able to reserve it!
 
-[Frontend part](https://github.com/Rudy-Menekam/Rentals-project-frontend.git)
+Here are some of the benefits of using our website:
 
-## 🛠 Built With <a name="built-with"></a>
+- Wide selection of Vespas to choose from
 
-### Tech Stack <a name="tech-stack"></a>
+The main features of this website are:
 
-- <a href="https://www.ruby-lang.org/">Ruby</a>
-- <a href="https://rubyonrails.org/">Rails</a>
-- <a href="https://es.react.dev/">React</a>
-- <a href="https://rubyonrails.org/">Redux</a>
-- <a href="https://redux.js.org/">Redux toolkit</a>
-- <a href="https://redux-toolkit.js.org/">PostgreSQL</a>
+- Users can see details of all the Vespas.
+- Users can reserve a Vespa for a special day.
+- Users can add their own Vespas and remove them if they want to.
 
-### Key Features <a name="key-features"></a>
+## Database Structure: <a name="erd"></a>
 
-- Posibility to create Vespas that can be rent.
+<img src="https://github.com/MarkoKermi/rentals_project-back-end.git" width="650">
+
+## Project Documentation 📄 <a name="project-documentation"></a>
+
+- Front-end GitHub repository [link](https://github.com/Rudy-Menekam/Rentals-project-frontend.git)👈
+- Back-end API [link](https://github.com/MarkoKermi/rentals_project-back-end.git) 👈
+
+## Kanban Board <a name="kanban-board"></a>
+
+### Kanban Board [link](https://github.com/users/Rudy-Menekam/projects/3)
+
+### Initial state of the Kanban Board:
+
+![image](https://drive.google.com/file/d/1s9aL1XscWvnGP3t9KD-jaKd5wOis7dVM/view?usp=drive_link)
+
+### Final state of the Kanban Board:
+
+![image](https://drive.google.com/file/d/1H7apABiT-PzcKlLqTZFlk7d5OGW8FGCB/view?usp=drive_link)
+
+### Team members: 3 (Marko Kermichiev, Mohi Minul Islam Yash, Menekam Rudy)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+ 
+## Built With 🛠️ <a name="built-with"></a>
 
-## 💻 Getting Started <a name="getting-started"></a>
+- Programming Languages: Ruby, SQL.
+- Framework: Ruby on Rails.
+- Database: PostgreSQL.
+- Code Editor: VS Code.
+
+## Getting Started <a name="getting-started"></a>
+
+To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-To run this project you need the following dependencies:
+- A web browser like Google Chrome.
+- A code editor like Visual Studio Code with Git and Ruby.
 
-- Ruby: `3.2.2`
-- Rails: `7.0.5`
-- PostgreSQL: `15.2`
+> You can check if Git is installed by running the following command in the terminal.
+
+```
+$ git --version
+```
+
+> Likewise for Ruby installation.
+
+```
+$ ruby --version && irb
+```
+
+To install rails, in the terminal kindly run this command:
+
+```
+$ gem install rails
+```
 
 ### Setup
 
-- Clone this repository to your local machine:
+Clone the repository using the GitHub link provided below.
 
-```sh
-  git clone https://github.com/MarkoKermi/rentals_project-back-end.git
+### Install
+
+In the terminal, go to your file directory and run this command.
+
 ```
-
-- Install dependencies:
-
-```sh
-  bundle install
-```
-
-- Create environment variables `POSTGRESQL_USER` and `POSTGRESQL_PASSWORD` or edit `config/database.yml` with your database connection info.
-
-- Recreate Data Base:
-
-```sh
-  rake db:schema:load
+$ git clone https://github.com/Rudy-Menekam/Rentals-project-frontend.git
 ```
 
 ### Usage
 
-To run the project, execute the following command in the terminal:
+Kindly modify the files as needed.
 
-```sh
-  cd dev
-  rails s
+### Run locally
+
+Make your way to the correct directory by running this command:
+
 ```
+$ cd Program-Capstone
+```
+
+Install the required dependencies to run the project with this command:
+
+```
+$ bundle install
+```
+
+Setup the database, run:
+
+```
+$ rails db:create
+$ rails db:migrate
+```
+
+Then run it in your browser with this command:
+
+```
+$ rails server
+```
+
+### Run tests
+
+To run tests, please run this command:
+
+```
+$ rspec
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 👥 Author <a name="author"></a>
 
@@ -102,9 +169,10 @@ To run the project, execute the following command in the terminal:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 🔭 Future Features <a name="future-features"></a>
+## 🚀 Future Features <a name="future-features"></a>
 
-- Generate reports.
+- We'd implement a robust Role Based Access Control feature.
+- We'd integrate a rating feature to allow users give ratings to Vespas booked.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -116,17 +184,13 @@ Feel free to check the [issues page](https://github.com/MarkoKermi/rentals_proje
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## ⭐️ Show your support <a name="support"></a>
+## Show your support <a name="️support"></a>
 
 Give a ⭐️ if you like this project!
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+## Acknowledgments
 
-## 🙏 Acknowledgments <a name="acknowledgements"></a>
-
-I would like to thank the Microverse community for their support and guidance.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+- [Microverse](https://www.microverse.org/)
 
 ## 📝 License <a name="license"></a>
 
